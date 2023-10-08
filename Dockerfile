@@ -1,9 +1,11 @@
 FROM alpine:latest as build
 
-RUN apk update && add openjdk17
+RUN apk update
+RUN add openjdk17
 
 COPY . .
-RUN chmod +x ./gradlew && ./gradlew bootJar --no-daemon
+RUN chmod +x ./gradlew
+RUN ./gradlew bootJar --no-daemon
 
 FROM openjdk:17-alpine
 EXPOSE 8080
