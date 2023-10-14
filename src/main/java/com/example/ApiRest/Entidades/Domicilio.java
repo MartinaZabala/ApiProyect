@@ -3,7 +3,7 @@ package com.example.ApiRest.Entidades;
 import jakarta.persistence.*;
 import lombok.*;
 @Entity
-@Table(name = "domicilio")
+@Table(name = "Domicilio")
 @Getter
 @Setter
 @NoArgsConstructor

@@ -5,7 +5,7 @@ import lombok.*;
 
 import java.util.List;
 @Entity
-@Table(name = "libro")
+@Table(name = "Libro")
 @Setter
 @Getter
 @NoArgsConstructor
@@ -23,6 +23,5 @@ public class Libro extends BaseEntidades{
 
     //Relacion Libro-Autor
     @ManyToMany(cascade = CascadeType.REFRESH)
-    @EqualsAndHashCode.Exclude
     private List<Autor> autores;
 }

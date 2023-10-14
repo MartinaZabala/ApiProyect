@@ -3,6 +3,8 @@ package com.example.ApiRest.Servicios;
 import com.example.ApiRest.Entidades.BaseEntidades;
 import com.example.ApiRest.Repositorios.BaseRepository;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.io.Serializable;
 import java.util.List;
@@ -19,6 +21,17 @@ public abstract class BaseServiceImpl<E extends BaseEntidades, ID extends Serial
     public List<E> findAll() throws Exception {
         try {
             List<E> entities = baseRepository.findAll();
+            if(entities.isEmpty()) throw new Exception("No hay Registros");
+            return entities;
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+    @Override
+    @Transactional
+    public Page<E> finAll(Pageable pageable) throws Exception{
+        try {
+            Page<E> entities = baseRepository.findAll(pageable);
             if(entities.isEmpty()) throw new Exception("No hay Registros");
             return entities;
         } catch (Exception e) {

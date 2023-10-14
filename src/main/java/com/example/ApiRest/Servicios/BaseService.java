@@ -2,6 +2,8 @@ package com.example.ApiRest.Servicios;
 
 import com.example.ApiRest.Entidades.BaseEntidades;
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.io.Serializable;
@@ -10,6 +12,8 @@ import java.util.List;
 public interface BaseService <E extends BaseEntidades, ID extends Serializable> {
     //Trea una lista de todas las entidades que están en la base de datos
     public List<E> findAll() throws Exception;
+    //Devuelve los datps paginados
+    public Page<E> finAll(Pageable pageable) throws Exception;
     //Trea a una entidad de acuerdo a un id pasado
     public E findById(ID id) throws Exception;
     //Crea una nueva entidad(Le enviamos una entidad al repository)
